@@ -19,7 +19,7 @@ public class Prog14_04 {
     }
 
     public static void main(String[] args) {
-        new Prog14_03();
+        new Prog14_04();
     }
 
     public void fillArray(int[] list) {
