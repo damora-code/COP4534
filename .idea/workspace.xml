@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2960313-68d1-4592-b5a0-e1dd5d24036c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog15/Algorithms.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog15/Prog15_02.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Prog15/Prog15_05.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Prog15/Prog15_06.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Prog16/BinarySearchTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Prog16/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Prog16/Prog16_01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Prog16/Queue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Prog15/Prog15_01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Prog15/Prog15_01.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,31 +57,12 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\fresco\Desktop\COP4534\src\main\java\Prog16" />
       <recent name="C:\Users\fresco\Desktop\COP4534\src\main\java\Prog15" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Prog14" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="Prog14_05" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Prog14.Prog14_05" />
-      <module name="COP4534" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Prog14.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Prog14_05" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
