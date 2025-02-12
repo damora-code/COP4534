@@ -28,6 +28,7 @@ public class Prog15_05 {
 
         if (n.compareTo(ONE) == 0) return false;
 
+
         BigInteger i;
         for (i = TWO; i.compareTo(s) <= 0; i = i.add(ONE)) {
             if (n.mod(i).compareTo(ZERO) == 0) return false;
