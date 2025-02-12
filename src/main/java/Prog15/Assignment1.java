@@ -11,10 +11,12 @@ import java.util.Random;
 
 public class Assignment1 {
     BigInteger FIRST = new BigInteger("10000000000000819");
-    BigInteger TEST = new BigInteger("2");
+    BigInteger TEST = new BigInteger("15");
     BigInteger ZERO = BigInteger.ZERO;
     BigInteger ONE = BigInteger.ONE;
     BigInteger TWO = BigInteger.TWO;
+    BigInteger THREE = BigInteger.valueOf(3);
+
 
     public Assignment1() {
         System.out.println(isPrimeDeterministic(TEST));;
@@ -36,11 +38,19 @@ public class Assignment1 {
 
         if (n.compareTo(ONE) <= 0) { // if 1, not prime
             return false;
-        } else if (n.compareTo(TWO) == 0) { // if 2, not prime
+        } else if (n.compareTo(TWO) == 0 || n.compareTo(BigInteger.valueOf(3)) == 0) { // 2 is smallest prime, 3 is also prime
+            return true;
+        } else if (n.mod(TWO).equals(ZERO)) {// even numbers are not prime so we use modulus to remove them
             return false;
-        } else return !n.mod(BigInteger.TWO).equals(BigInteger.ZERO); // even numbers are not prime so we use modulus to remove them
+        }
 
+        // check if divisible by 3 to sqrt, skipping even numbers
+        BigInteger i;
+        for (i = THREE; i.multiply(i).compareTo(n) <= 0; i = i.add(TWO)) {
+            if (n.mod(i).equals(ZERO)) return false;
+        }
 
+        return true;
     }
 
     /**
