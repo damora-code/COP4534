@@ -18,13 +18,27 @@ public class Assignment1 {
     BigInteger ONE = BigInteger.ONE;
     BigInteger TWO = BigInteger.TWO;
     BigInteger THREE = BigInteger.valueOf(3);
+    long startTime = System.currentTimeMillis();
+    long endTime = startTime + (60 * 60 * 1000);
 
     public Assignment1() {
 
-        System.out.println(isPrimeDeterministic(TEST));
-        System.out.println(isProbablyPrimeRandomized(TEST, 10));
-        //WritingToTextfile.writeToTextfile("output.csv"); // FileWriter
-        writeToTextfile("output.CSV");
+        //System.out.println(isPrimeDeterministic(TEST));
+        //System.out.println(isProbablyPrimeRandomized(TEST, 10));
+        writeToTextfile("output.csv"); // file writer
+
+        for (BigInteger CURRENT = FIRST; startTime <= endTime; CURRENT.add(ONE)) {
+            // deterministic approach
+            long daStartTime = System.currentTimeMillis();
+            boolean isPrimeDA = isPrimeDeterministic(CURRENT);
+            long daEndTime = System.currentTimeMillis();
+            long daTime = daEndTime - daStartTime;
+            // randomized approach
+            long raStartTime = System.currentTimeMillis();
+            boolean isPrimeRA = isProbablyPrimeRandomized(CURRENT,10);
+            long raEndTime = System.currentTimeMillis();
+            long raTime = raEndTime - raStartTime;
+        }
     }
 
     public static void main(String[] args) {
@@ -111,7 +125,7 @@ public class Assignment1 {
      *
      * @author Prof. A. Hernandez
      */
-    public void writeToTextfile(String filename) {
+    public void writeToTextfile(String filename, BigInteger currentValue, long timeDA, boolean daPrime, long timeRA, boolean raPrime) {
         PrintWriter output = null;
         //open output stream
         try {
@@ -119,6 +133,7 @@ public class Assignment1 {
         } catch (IOException ex) {
             System.exit(1);
         }
+
         Random rnd = new Random();
         int n = 100;
 
