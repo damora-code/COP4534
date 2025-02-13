@@ -12,7 +12,6 @@ import java.util.Random;
  */
 public class WritingToTextfile {
     public static void writeToTextfile(String filename) {
-        //String outputFilename = "output.csv";
         PrintWriter output = null;
         //open output stream
         try {
@@ -22,6 +21,8 @@ public class WritingToTextfile {
         }
         Random rnd = new Random();
         int n = 100;
+
+        // headers for csv file
         output.println("value" + "," + " Time of DA" + "," + " Prime? (According to DA)" + "," + " Time of RA" + "," + " Prime? (According to RA)");
         for (int i = 0; i < n; i++) {
             output.println(i + "," + rnd.nextInt(10) + "," + rnd.nextInt(100) + "," + rnd.nextInt(1000));

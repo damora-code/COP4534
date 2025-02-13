@@ -21,9 +21,10 @@ public class Assignment1 {
 
     public Assignment1() {
 
-        // System.out.println(isPrimeDeterministic(TEST));
-        // System.out.println(isProbablyPrimeRandomized(TEST, 10));
-        WritingToTextfile.writeToTextfile("output.csv"); // FileWriter
+        System.out.println(isPrimeDeterministic(TEST));
+        System.out.println(isProbablyPrimeRandomized(TEST, 10));
+        //WritingToTextfile.writeToTextfile("output.csv"); // FileWriter
+        writeToTextfile("output.CSV");
     }
 
     public static void main(String[] args) {
@@ -103,6 +104,31 @@ public class Assignment1 {
     BigInteger randomBigInteger(BigInteger value) {
         int bitLength = value.bitLength();
         return (new BigInteger(bitLength, new Random()).mod(value));
+    }
+
+    /**
+     * Illustrates how to create textfile in Java program
+     *
+     * @author Prof. A. Hernandez
+     */
+    public void writeToTextfile(String filename) {
+        PrintWriter output = null;
+        //open output stream
+        try {
+            output = new PrintWriter(new FileWriter(filename));
+        } catch (IOException ex) {
+            System.exit(1);
+        }
+        Random rnd = new Random();
+        int n = 100;
+
+        // headers for csv file
+        output.println("value" + "," + " Time of DA" + "," + " Prime? (According to DA)" + "," + " Time of RA" + "," + " Prime? (According to RA)");
+        for (int i = 0; i < n; i++) {
+            output.println(i + "," + rnd.nextInt(10) + "," + rnd.nextInt(100) + "," + rnd.nextInt(1000));
+        }
+        //close output stream
+        output.close();
     }
 }
 
