@@ -122,13 +122,11 @@ public class Assignment1 {
         Random rnd = new Random();
         int n = 100;
 
-        // headers for csv file
-        output.println("value" + "," + " Time of DA" + "," + " Prime? (According to DA)" + "," + " Time of RA" + "," + " Prime? (According to RA)");
+        output.println("value" + "," + " Time of DA" + "," + " Prime? (According to DA)" + "," + " Time of RA" + "," + " Prime? (According to RA)"); // headers for csv file
         for (int i = 0; i < n; i++) {
             output.println(i + "," + rnd.nextInt(10) + "," + rnd.nextInt(100) + "," + rnd.nextInt(1000));
         }
-        //close output stream
-        output.close();
+        output.close(); //close output stream
     }
 }
 
