@@ -2,6 +2,10 @@
  * Daniel Morales
  * PID: 6014232
  * COP4534 U01 1251
+ *
+ * This program tests primality of big integers using a deterministic approach and a randomized approach
+ * The program starts with the large number given FIRST and checks numbers for primality for an hour
+ * It then records the time it took for each test, the result of the boolean if it is prime or not and stored in a csv
  */
 package ASG1;
 
@@ -12,32 +16,39 @@ import java.math.BigInteger;
 import java.util.Random;
 
 public class Assignment1 {
+
+    // set variables for values
     BigInteger FIRST = new BigInteger("10000000000000819");
-    BigInteger TEST = new BigInteger("9");
     BigInteger ZERO = BigInteger.ZERO;
     BigInteger ONE = BigInteger.ONE;
     BigInteger TWO = BigInteger.TWO;
     BigInteger THREE = BigInteger.valueOf(3);
-    long startTime = System.currentTimeMillis();
-    long endTime = startTime + (60 * 60 * 1000);
+    // BigInteger TEST = new BigInteger("9"); -- test case for prime testing
+
+
 
     public Assignment1() {
+        long startTime = System.currentTimeMillis();// capture time in milliseconds
+        long endTime = startTime + (60 * 60 * 1000); // 60 minutes x 60 seconds x 1000 milliseconds to have an hour
 
-        //System.out.println(isPrimeDeterministic(TEST));
-        //System.out.println(isProbablyPrimeRandomized(TEST, 10));
-        writeToTextfile("output.csv"); // file writer
+        initCSV("output.csv");
 
-        for (BigInteger CURRENT = FIRST; startTime <= endTime; CURRENT.add(ONE)) {
+        for (BigInteger CURRENT = FIRST; System.currentTimeMillis() < endTime; CURRENT = CURRENT.add(ONE)) {
+
             // deterministic approach
-            long daStartTime = System.currentTimeMillis();
+            long daStartTime = System.nanoTime();
             boolean isPrimeDA = isPrimeDeterministic(CURRENT);
-            long daEndTime = System.currentTimeMillis();
-            long daTime = daEndTime - daStartTime;
+            long daEndTime = System.nanoTime();
+            long daTime = (daEndTime - daStartTime);
+
             // randomized approach
-            long raStartTime = System.currentTimeMillis();
-            boolean isPrimeRA = isProbablyPrimeRandomized(CURRENT,10);
-            long raEndTime = System.currentTimeMillis();
-            long raTime = raEndTime - raStartTime;
+            long raStartTime = System.nanoTime();
+            boolean isPrimeRA = isProbablyPrimeRandomized(CURRENT, 40);
+            long raEndTime = System.nanoTime();
+            long raTime = (raEndTime - raStartTime);
+
+            // write to CSV
+            writeToTextfile("output.csv", CURRENT, daTime, isPrimeDA, raTime, isPrimeRA);
         }
     }
 
@@ -63,10 +74,10 @@ public class Assignment1 {
             return false;
         }
 
-        // check if divisible by 3 to sqrt, skipping even numbers
+        // check if divisible by 3 to sqrt
         BigInteger i;
-        for (i = THREE; i.multiply(i).compareTo(n) <= 0; i = i.add(TWO)) {
-            if (n.mod(i).equals(ZERO)) return false;
+        for (i = THREE; i.compareTo(s) <= 0; i = i.add(TWO)) {
+            if (n.mod(i).compareTo(ZERO) == 0) return false;
         }
 
         return true;
@@ -81,29 +92,22 @@ public class Assignment1 {
      * @return will return true if number is prime, false if not
      */
     public boolean isProbablyPrimeRandomized(BigInteger n, int iterations) {
-        if (n.compareTo(ONE) <= 0) { // if 1, not prime
-            return false;
-        } else if (n.compareTo(TWO) == 0 || n.compareTo(BigInteger.valueOf(3)) == 0) { // 2 is the smallest prime, 3 is also prime
-            return true;
-        }
-
-        Random random = new Random();
+        if (n.compareTo(TWO) < 0) return false; // 0,1 are not prime
+        if (n.equals(TWO) || n.equals(THREE)) return true; // 2 and 3 are prime
+        if (n.mod(TWO).equals(ZERO)) return false; // even numbers > 2 are not prime
 
         for (int i = 0; i < iterations; i++) {
-            BigInteger a;
+            // use professors function to generate a random base a in [2, n-1]
+            BigInteger a = randomBigInteger(n.subtract(TWO)).add(TWO);
 
-            // this helps create a random base in range [2, n-2]
-            do {
-                a = new BigInteger(n.bitLength(), random);
-            } while (a.compareTo(TWO) < 0 || a.compareTo(n.subtract(ONE)) >= 0);
-
-            // -- CRITICAL: USE FORMULA FROM CLASS a^(n-1) ≡ 1 (mod n) --
+            // apply fermat's test: a^(n-1) ≡ 1 (mod n)
             if (!a.modPow(n.subtract(ONE), n).equals(ONE)) {
-                return false; // composite number
+                return false; // Composite number
             }
         }
-        return true; // n is probably prime
+        return true; // probably prime
     }
+
 
     /**
      * This code was created by
@@ -121,27 +125,31 @@ public class Assignment1 {
     }
 
     /**
-     * Illustrates how to create textfile in Java program
+     * modified version of professor function on how to create csv in Java program
      *
      * @author Prof. A. Hernandez
+     * @author Daniel morales
      */
     public void writeToTextfile(String filename, BigInteger currentValue, long timeDA, boolean daPrime, long timeRA, boolean raPrime) {
-        PrintWriter output = null;
         //open output stream
-        try {
-            output = new PrintWriter(new FileWriter(filename));
+        try (PrintWriter output = new PrintWriter(new FileWriter(filename, true))) {
+            output.println(currentValue + "," + timeDA + "," + (daPrime ? "YES" : "NO") + "," + timeRA + "," + (raPrime ? "YES" : "NO"));
         } catch (IOException ex) {
             System.exit(1);
         }
+    }
 
-        Random rnd = new Random();
-        int n = 100;
-
-        output.println("value" + "," + " Time of DA" + "," + " Prime? (According to DA)" + "," + " Time of RA" + "," + " Prime? (According to RA)"); // headers for csv file
-        for (int i = 0; i < n; i++) {
-            output.println(i + "," + rnd.nextInt(10) + "," + rnd.nextInt(100) + "," + rnd.nextInt(1000));
+    /**
+     * initializes the CSV file with the column headers.
+     *
+     * @param filename the name of the CSV file were going to call it
+     */
+    private void initCSV(String filename) {
+        try (PrintWriter output = new PrintWriter(new FileWriter(filename))) {
+            output.println("Value, Time of DA (ns), Prime? (According to DA), Time of RA (ns), Prime? (According to RA)");
+        } catch (IOException ex) {
+            System.err.println("error with CSV file: " + ex.getMessage());
         }
-        output.close(); //close output stream
     }
 }
 
