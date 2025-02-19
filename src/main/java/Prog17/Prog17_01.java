@@ -1,6 +1,5 @@
 package Prog17;
 
-import Prog16.Prog16_03.Prog16_04;
 
 public class Prog17_01 {
     private final int MAX_N = 90;

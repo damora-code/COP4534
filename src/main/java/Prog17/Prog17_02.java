@@ -1,16 +1,36 @@
 package Prog17;
 
 public class Prog17_02 {
-    int n = 6; // number of rows
-    int k = 6; // number of columns
 
     public Prog17_02() {
-        int[][] matrix = new int[n][k];
 
-        for (int i = 0; i < n-1; i++)
-            for (int j = 0; j < k-1; j++)
-                matrix[n][k] = matrix[i - 1][j - 1] + matrix[i - 1][j];
-                System.out.println(matrix[n][k]);
+        int rows = 8;
+        int cols = 8;
+        int[][] array = new int[rows][cols];
+
+        for (int i = 0; i < rows - 1; i++) {
+            array[i][0] = 1;
+
+        }
+
+        for (int i = 1; i < rows; i++) {
+            for (int j = 1; j < cols; j++) {
+
+                array[i][j] = array[i - 1][j - 1] + array[i - 1][j];
+
+            }
+        }
+
+        for (int i = 0; i < rows - 1; i++) {
+            for (int j = 0; j < cols; j++) {
+
+                if (array[i][j] != 0)
+                    System.out.print(array[i][j] + " ");
+
+
+            }
+            System.out.println();
+        }
     }
 
     public static void main(String[] args) {
