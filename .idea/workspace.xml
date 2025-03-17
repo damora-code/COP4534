@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29e62c01-4f4a-4603-bf67-bb5c4c578d2e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Prog18_05 - graph 01.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog18/FrameDisplay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog18/Graph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog18/GraphDisplay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog18/GraphInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog18/Prog18_01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog18/Prog18_03.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog18/Prog18_05 - graph 01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog18/Prog18_05.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog18/Queue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Prog17/Prog17_03.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Prog17/Prog17_03.java" afterDir="false" />
-    </list>
+    <list default="true" id="29e62c01-4f4a-4603-bf67-bb5c4c578d2e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
