@@ -181,4 +181,58 @@ public class Graph implements GraphInterface
             if (!visited[u]) recursiveDFT(u,visited);
         }
     }
+
+    /**
+     * Returns smallest element in given array d, out of those that have not
+     * been visited (see allShortestPaths method).
+     *
+     * @param visited visited elements
+     * @param d       array of distances
+     * @return index of smallest element in d
+     */
+
+    private int minDistance(boolean[] visited, int[] distance) {
+        int index = -1;
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < verticesNumber; i++) {
+            if (!visited[i]) {
+                if (distance[i] <= min) {
+                    min = distance[i];
+                    index = i;
+                }
+            }
+        }
+        return index;
+    }
+
+    /**
+     * Calculates the shortest paths from a given vertex to all vertices.
+     *
+     * @param p paths (p[i] contains previous vertex in the shortest path from v)
+     * @param d distances (d[i] contains the shortest distance from v)
+     * @param v given vertex
+     */
+    public void allShortestPaths(int[] p, int[] d, int v) {
+        boolean[] visited = new boolean[verticesNumber];
+
+        for (int i = 0; i < verticesNumber; i++) {
+            visited[i] = false; //not yet visited
+            p[i] = -1; //previous vertex is unknown
+            d[i] = Integer.MAX_VALUE; // d[i] = INFINITY
+        }
+        d[v] = 0;
+
+        for (int i = 0; i < verticesNumber - 1; i++) {
+            int w = minDistance(visited, d);
+            visited[w] = true;
+
+            int[] adj = findAdjacencyVertices(w);
+            for (int u : adj) {
+                if (!visited[u]) {
+                    d[u] = d[w] + matrix[w][u];
+                    p[u] = w;
+                }
+            }
+        }
+    }
 }
