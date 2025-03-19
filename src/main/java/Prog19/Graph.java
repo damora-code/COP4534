@@ -1,7 +1,11 @@
-package Prog18;
+package Prog19;
+
+import Prog18.GraphInterface;
+import Prog18.Queue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -11,6 +15,7 @@ import java.util.Scanner;
  * @author Prof. Antonio Hernandez
  */
 public class Graph implements GraphInterface {
+    int count = 0;
     private int verticesNumber;
     private int[][] matrix; //adjacency matrix
 
@@ -161,7 +166,7 @@ public class Graph implements GraphInterface {
      * Returns the smallest element in given array d, out of those that have not
      * been visited (see allShortestPaths method).
      *
-     * @param visited visited elements
+     * @param visited  visited elements
      * @param distance array of distances
      * @return index of smallest element in d
      */
@@ -246,4 +251,122 @@ public class Graph implements GraphInterface {
 
         return shortestPath;
     }
+
+    /**
+     * Print all permutations with values in [0, n-1].
+     */
+    public void printPermutations(int n) {
+        int[] a = new int[n];
+        printPermutations(a, 0);
+    }
+
+    /**
+     * Recursive algorithm.
+     *
+     * @param a array partially filled with permutation
+     * @param k index of current element in permutation
+     */
+    private void printPermutations(int[] a, int k) {
+        if (k == a.length) {
+            printArray(a);
+        } else {
+            ArrayList<Integer> Sk = constructCandidateSet(a, k);
+            for (int s : Sk) {
+                a[k] = s;
+                printPermutations(a, k + 1);
+            }
+        }
+    }
+
+    /**
+     * Construct candidate set (set will contain elements not used
+     * in locations [0, k-1] of array a).
+     */
+    private ArrayList<Integer> constructCandidateSet(int[] a, int k) {
+        ArrayList<Integer> candidates = new ArrayList<>();
+        boolean[] b = new boolean[a.length];
+
+        for (int i = 0; i < k; i++) {
+            b[a[i]] = true;
+        }
+
+        for (int i = 0; i < a.length; i++) {
+            if (!b[i]) candidates.add(i);
+        }
+
+        return candidates;
+    }
+
+        /**
+     * Prints array a
+     */
+    private void printArray(int[] a) {
+
+        System.out.printf("%4d: ", ++count);
+        for (int v : a) {
+            System.out.print(v + " ");
+        }
+
+        System.out.println();
+    }
+
+    /**
+     * Finds a shortest route that visits every vertex
+     * exactly once and returns to the starting point.
+     * Uses exhaustive search.
+     *
+     * @param shortestRoute array with a shortest path (return value)
+     * @return shortest distance
+     */
+    public int TSP_exhaustiveSearch(int[] shortestRoute) {
+        // initialize shortestRoute
+        for (int i = 0; i < verticesNumber; i++) {
+            shortestRoute[i] = i;
+        }
+
+        int[] a = new int[verticesNumber];
+        TSP_exhaustiveSearch(shortestRoute, a, 0);
+
+        return totalDistance(shortestRoute);
+    }
+
+    /**
+     * Calculates distance of given route.
+     *
+     * @param a route
+     * @return distance of route
+     */
+    int totalDistance(int[] a) {
+        int n = verticesNumber;
+        // add weights of all edges in the path
+        int totalWeight = 0;
+        for (int i = 0; i < n; i++) {
+            int weight = matrix[a[i]][a[(i + 1) % n]];
+            totalWeight += weight;
+        }
+        return totalWeight;
+    }
+
+    /**
+     * Recursive algorithm.
+     *
+     * @param a array partially filled with permutation
+     * @param k index of current element in permutation
+     */
+    private void TSP_exhaustiveSearch(int[] shortestRoute, int[] a, int k) {
+        if (k == a.length) {
+            if (totalDistance(a) < totalDistance(shortestRoute)) {
+                System.arraycopy(a, 0, shortestRoute, 0, verticesNumber);
+            }
+            // System.out.print(totalDistance(a) + " ");
+            // printArray(a);
+        } else {
+            ArrayList<Integer> Sk = constructCandidateSet(a, k);
+            for (int s : Sk) {
+                a[k] = s;
+                TSP_exhaustiveSearch(shortestRoute, a, k + 1);
+            }
+        }
+    }
+
 }
