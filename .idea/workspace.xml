@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29e62c01-4f4a-4603-bf67-bb5c4c578d2e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Prog19/PermutationNeighborhood.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Prog19/Prog19_02.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Prog19/Prog19_03.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Prog19/Prog19_04.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Prog18/Prog18_08.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Prog19/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Prog19/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Prog19/Prog19_01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Prog19/Prog19_01.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,11 +72,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\fresco\Desktop\COP4534\src\main\java\Prog19" />
       <recent name="C:\Users\fresco\Desktop\COP4534\src\main\java" />
       <recent name="C:\Users\fresco\Desktop\COP4534" />
       <recent name="C:\Users\fresco\Desktop\COP4534\src" />
       <recent name="C:\Users\fresco\Desktop\COP4534\src\main\java\Prog18" />
-      <recent name="C:\Users\fresco\Desktop\COP4534\src\main\java\Prog17" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Prog19" />
