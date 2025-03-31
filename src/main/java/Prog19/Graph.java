@@ -404,4 +404,39 @@ public class Graph implements GraphInterface {
         }
         return bestDistance;
     }
+
+    public int TSP_localSearch(int[] shortestRoute) {
+        int bestDistance;
+
+        //generate initial solution as a random permutation
+        int[] a = new int[verticesNumber];
+        randomPermutation(a);
+
+        // shortest route = initial solution
+        System.arraycopy(a, 0, shortestRoute, 0, verticesNumber);
+        bestDistance = totalDistance(shortestRoute);
+
+        boolean betterSolutionFound;
+
+        /*
+        Loop will continue as long as there is a neighbor that is better than the current best
+        distance obtained so far.
+         */
+        do {
+            betterSolutionFound = false;
+            PermutationNeighborhood pn = new PermutationNeighborhood(shortestRoute);
+            while (pn.hasNext()) {
+                a = pn.next();
+                int currentDistance = totalDistance(a);
+                if (currentDistance < bestDistance) {
+                    //shortestRoute = current solution
+                    System.arraycopy(a, 0, shortestRoute, 0, verticesNumber);
+                    bestDistance = currentDistance;
+                    betterSolutionFound = true;
+                }
+            }
+        } while (betterSolutionFound);
+
+        return bestDistance;
+    }
 }
