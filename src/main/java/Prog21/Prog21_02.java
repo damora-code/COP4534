@@ -1,18 +1,16 @@
 package Prog21;
 
 public class Prog21_02 {
-    public static void main(String[] args) {
-        new Prog21_02();
-    }
-
     double tolerance = 0.0001;
     int maxIterations = 100;
-
-    public Prog21_02()
-    {
+    public Prog21_02() {
         System.out.println(" Root of f(x) = x^3 - 2:");
-        System.out.println(" x = " + root(1, 3) + " (Numerical method)");
-        System.out.println(" x = " + Math.pow(2, 1.0/3.0) + " (Analytic method)");
+        System.out.println(" x = " + root(0, 1) + " (Numerical method)");
+        System.out.println(" x = " + Math.pow(2, 1.0 / 3.0) + " (Analytic method)");
+    }
+
+    public static void main(String[] args) {
+        new Prog21_02();
     }
 
     /**
@@ -21,21 +19,20 @@ public class Prog21_02 {
      * @param x input parameter
      * @return the evaluation of f at x
      */
-    public double f(double x)
-    {
+    public double f(double x) {
         // f(x) = x^3 - 2
-        return Math.pow(x, 3) - 2;
+        return Math.pow((x - 2.5), 3) - Math.pow(x, 2) + 5;
     }
 
-    /** Computes root of f(x) = x^3 - 2 in [a, b] using numerical method. */
-    public double root(double a, double b)
-    {
+    /**
+     * Computes root of f(x) = x^3 - 2 in [a, b] using numerical method.
+     */
+    public double root(double a, double b) {
         int i = 0;
         double mid = a;
         double rae; // relative approximate error
 
-        do
-        {
+        do {
             double oldMid = mid;
             mid = (a + b) / 2;
             i++;
