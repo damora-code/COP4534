@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29e62c01-4f4a-4603-bf67-bb5c4c578d2e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog22/Prog22_01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog22/Prog22_02.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog22/Prog22_03.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Prog23/Prog23_01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Prog23/Prog23_03.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Prog23/Prog23_06.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Prog21/Prog21_02.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Prog21/Prog21_02.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +60,7 @@
     "Application.Prog22_02.executor": "Run",
     "Application.Prog22_03.executor": "Run",
     "Application.Prog23_01.executor": "Run",
+    "Application.Prog23_03.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
